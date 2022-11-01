@@ -1,13 +1,15 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-const Login = ({ setCurrentUser }) => {
+const Login = () => {
   const [errMsg, setErrMsg] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -15,7 +17,7 @@ const Login = ({ setCurrentUser }) => {
       .then((userCredential) => {
         setErrMsg(null);
         const user = userCredential.user;
-        setCurrentUser(true);
+        dispatch({ type: "LOGIN", payload: user });
         navigate("/profile");
       })
       .catch((error) => {

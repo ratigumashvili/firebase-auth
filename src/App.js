@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { AuthContext } from "./context/AuthContext";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 function App() {
-  const [currentUser, setCurrentUser] = useState(false);
+  const { currentUser } = useContext(AuthContext);
+
+  console.log(currentUser);
 
   const RequireUser = ({ children }) => {
     return currentUser ? children : <Navigate to="/" />;
@@ -12,7 +15,7 @@ function App() {
     <div className="app">
       <h1>hello firebase</h1>
       <Routes>
-        <Route index element={<Login setCurrentUser={setCurrentUser} />} />
+        <Route index element={<Login />} />
         <Route
           path="/profile"
           element={
