@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
+import Header from "./components/Header";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 function App() {
@@ -13,7 +14,7 @@ function App() {
   };
   return (
     <div className="app">
-      <h1>hello firebase</h1>
+      <Header />
       <Routes>
         <Route index element={<Login />} />
         <Route
