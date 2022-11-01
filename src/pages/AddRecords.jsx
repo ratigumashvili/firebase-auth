@@ -2,6 +2,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useState } from "react";
 import FieldsetGeneral from "../components/FieldsetGeneral";
+import FieldsetSiteData from "../components/FieldsetSiteData";
 
 const AddRecords = () => {
   const [recordInput, SetRecordInput] = useState({
@@ -9,9 +10,26 @@ const AddRecords = () => {
     dateCollected: "",
     collectionNumber: "",
     collectors: "",
+    country: "",
+    province: "",
+    localSituation: "",
+    latitude: "",
+    longitude: "",
+    GpsDatum: "",
   });
 
-  const { title, dateCollected, collectionNumber, collectors } = recordInput;
+  const {
+    title,
+    dateCollected,
+    collectionNumber,
+    collectors,
+    country,
+    province,
+    localSituation,
+    latitude,
+    longitude,
+    GpsDatum,
+  } = recordInput;
 
   const handleChangeInput = (e) => {
     SetRecordInput({ ...recordInput, [e.target.name]: e.target.value });
@@ -24,6 +42,12 @@ const AddRecords = () => {
       dateCollected: dateCollected,
       collectionNumber: collectionNumber,
       collectors: collectors,
+      country: country,
+      province: province,
+      localSituation: localSituation,
+      latitude: latitude,
+      longitude: longitude,
+      GpsDatum: GpsDatum,
     });
   };
   return (
@@ -36,6 +60,15 @@ const AddRecords = () => {
           dateCollected={dateCollected}
           collectionNumber={collectionNumber}
           collectors={collectors}
+        />
+        <FieldsetSiteData
+          handleChangeInput={handleChangeInput}
+          country={country}
+          province={province}
+          localSituation={localSituation}
+          latitude={latitude}
+          longitude={longitude}
+          GpsDatum={GpsDatum}
         />
         <button type="submit">Send</button>
       </form>
