@@ -18,7 +18,7 @@ const Login = () => {
         setErrMsg(null);
         const user = userCredential.user;
         dispatch({ type: "LOGIN", payload: user });
-        navigate("/profile");
+        navigate("/addrecords");
       })
       .catch((error) => {
         setErrMsg(error.message);

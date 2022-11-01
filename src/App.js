@@ -3,11 +3,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import Header from "./components/Header";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
+import AddRecords from "./pages/AddRecords";
 function App() {
   const { currentUser } = useContext(AuthContext);
-
-  console.log(currentUser);
 
   const RequireUser = ({ children }) => {
     return currentUser ? children : <Navigate to="/" />;
@@ -18,10 +16,10 @@ function App() {
       <Routes>
         <Route index element={<Login />} />
         <Route
-          path="/profile"
+          path="/addrecords"
           element={
             <RequireUser>
-              <Profile />
+              <AddRecords />
             </RequireUser>
           }
         />
