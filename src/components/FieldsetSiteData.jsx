@@ -1,83 +1,66 @@
 import { useState } from "react";
 import { countryData } from "../data";
+import { Row, Col, Label, Input } from "reactstrap";
 
-const FieldsetSiteData = ({
-  handleChangeInput,
-  country,
-  province,
-  localSituation,
-  latitude,
-  longitude,
-  GpsDatum,
-}) => {
+const FieldsetSiteData = ({ register }) => {
   const [gpsUsed, setGpsUsed] = useState(true);
   return (
     <fieldset>
       <legend>Site data</legend>
-      <label htmlFor="country">Country</label>
-      <select
-        name="country"
-        id="country"
-        value={country}
-        onChange={handleChangeInput}
-      >
-        {countryData.map((country) => (
-          <option key={country.id} value={country.name}>
-            {country.name}
-          </option>
-        ))}
-      </select>
-      <label htmlFor="province">Province</label>
-      <input
-        type="text"
-        id="province"
-        name="province"
-        value={province}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="localSituation">Local situation</label>
-      <input
-        type="text"
-        id="localSituation"
-        name="localSituation"
-        value={localSituation}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="latitude">Latitude</label>
-      <input
-        type="text"
-        id="latitude"
-        name="latitude"
-        value={latitude}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="longitude">Longitude</label>
-      <input
-        type="text"
-        id="longitude"
-        name="longitude"
-        value={longitude}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="gps">GPS Used</label>
-      <select
-        id="gps"
-        onChange={() => {
-          setGpsUsed(!gpsUsed);
-        }}
-      >
-        <option>Yes</option>
-        <option>No</option>
-      </select>
-      <label htmlFor="GpsDatum">GPS datum</label>
-      <input
-        disabled={!gpsUsed}
-        type="text"
-        id="GpsDatum"
-        name="GpsDatum"
-        value={GpsDatum}
-        onChange={handleChangeInput}
-      />
+      <Row>
+        <Col sm="12" md="4">
+          <Label htmlFor="country">Country</Label>
+          <Input type="select" id="country" {...register("country")}>
+            {countryData.map((country) => (
+              <option key={country.id} value={country.name}>
+                {country.name}
+              </option>
+            ))}
+          </Input>
+        </Col>
+        <Col sm="12" md="4">
+          <Label htmlFor="province">Province</Label>
+          <Input type="text" id="province" {...register("province")} />
+        </Col>
+        <Col sm="12" md="4">
+          <Label htmlFor="localSituation">Local situation</Label>
+          <Input
+            type="text"
+            id="localSituation"
+            {...register("localSituation")}
+          />
+        </Col>
+        <Col sm="12" md="3">
+          <Label htmlFor="latitude">Latitude</Label>
+          <Input type="text" id="latitude" {...register("latitude")} />
+        </Col>
+        <Col sm="12" md="3">
+          <Label htmlFor="longitude">Longitude</Label>
+          <Input type="text" id="longitude" {...register("longitude")} />
+        </Col>
+        <Col sm="12" md="2">
+          <Label htmlFor="gps">GPS Used</Label>
+          <Input
+            type="select"
+            id="gps"
+            onChange={() => {
+              setGpsUsed(!gpsUsed);
+            }}
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </Input>
+        </Col>
+        <Col sm="12" md="4">
+          <Label htmlFor="GpsDatum">GPS datum</Label>
+          <Input
+            disabled={!gpsUsed}
+            type="text"
+            id="GpsDatum"
+            {...register("GpsDatum")}
+          />
+        </Col>
+      </Row>
     </fieldset>
   );
 };

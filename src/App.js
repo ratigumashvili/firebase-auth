@@ -4,6 +4,8 @@ import { AuthContext } from "./context/AuthContext";
 import Header from "./components/Header";
 import Login from "./pages/Login";
 import AddRecords from "./pages/AddRecords";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container } from "reactstrap";
 function App() {
   const { currentUser } = useContext(AuthContext);
 
@@ -11,7 +13,7 @@ function App() {
     return currentUser ? children : <Navigate to="/" />;
   };
   return (
-    <div className="app">
+    <Container className="app">
       <Header />
       <Routes>
         <Route index element={<Login />} />
@@ -24,7 +26,7 @@ function App() {
           }
         />
       </Routes>
-    </div>
+    </Container>
   );
 }
 

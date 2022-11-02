@@ -1,45 +1,31 @@
-const FieldsetGeneral = ({
-  handleChangeInput,
-  title,
-  dateCollected,
-  collectionNumber,
-  collectors,
-}) => {
+import { Row, Col, Label, Input } from "reactstrap";
+
+const FieldsetGeneral = ({ register }) => {
   return (
     <fieldset>
       <legend>General</legend>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        value={title}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="dateCollected">Date collected</label>
-      <input
-        type="date"
-        id="dateCollected"
-        name="dateCollected"
-        value={dateCollected}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="collectionNumber">Collector's number</label>
-      <input
-        type="text"
-        id="collectionNumber"
-        name="collectionNumber"
-        value={collectionNumber}
-        onChange={handleChangeInput}
-      />
-      <label htmlFor="collectors">Collector(s)</label>
-      <input
-        type="text"
-        id="collectors"
-        name="collectors"
-        value={collectors}
-        onChange={handleChangeInput}
-      />
+      <Row>
+        <Col sm="12" md="4">
+          <Label htmlFor="dateCollected">Date collected</Label>
+          <Input
+            type="date"
+            id="dateCollected"
+            {...register("dateCollected")}
+          />
+        </Col>
+        <Col sm="12" md="4">
+          <Label htmlFor="collectionNumber">Collector's number</Label>
+          <Input
+            type="text"
+            id="collectionNumber"
+            {...register("collectionNumber")}
+          />
+        </Col>
+        <Col sm="12" md="4">
+          <Label htmlFor="collectors">Collector(s)</Label>
+          <Input type="text" id="collectors" {...register("collectors")} />
+        </Col>
+      </Row>
     </fieldset>
   );
 };

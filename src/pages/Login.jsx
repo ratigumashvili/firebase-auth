@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Form, Label, Input, Button, Row, Col } from "reactstrap";
 
 const Login = () => {
   const [errMsg, setErrMsg] = useState(null);
@@ -27,24 +28,34 @@ const Login = () => {
   return (
     <div className="login">
       {errMsg && <span className="error">{errMsg}</span>}
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <fieldset>
           <legend>User authentication</legend>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Submit</button>
+          <Row>
+            <Col sm="12" md="5">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                type="text"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Col>
+            <Col sm="12" md="5">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                type="text"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Col>
+            <Col sm="12" md="2" className="align-end">
+              <Button type="submit" color="primary" block>
+                Submit
+              </Button>
+            </Col>
+          </Row>
         </fieldset>
-      </form>
+      </Form>
     </div>
   );
 };

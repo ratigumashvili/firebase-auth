@@ -18,19 +18,27 @@ code {
   justify-content: space-between;
 }
 
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+fieldset {
+  padding: 15px !important;
+  border: solid 1px #ced4da !important;
+  border-radius: 5px !important;
+  margin: 2rem 0 !important;
+  position: relative;
 
-  form {
-    min-width: 500px;
+  input {
+    margin-bottom: 15px;
   }
+}
 
-  fieldset {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+legend {
+  position: absolute;
+  width: max-content !important;
+  top: -20px;
+  left: 5px;
+  padding: 0 10px !important;
+  background-color: white;
+}
+
+.align-end {
+  align-self: flex-end;
 }
