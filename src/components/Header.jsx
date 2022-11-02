@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { Button } from "reactstrap";
 
 const Header = () => {
   const { dispatch, currentUser } = useContext(AuthContext);
@@ -8,8 +9,12 @@ const Header = () => {
   };
   return (
     <div className="header">
-      <h1>App titile</h1>
-      {currentUser && <button onClick={logout}>Log Out</button>}
+      <h1>TBI Collection data form</h1>
+      {currentUser && (
+        <Button onClick={logout} color="danger">
+          Log Out
+        </Button>
+      )}
     </div>
   );
 };

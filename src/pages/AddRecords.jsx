@@ -1,7 +1,6 @@
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
-// import { useState } from "react";
 import FieldsetGeneral from "../components/FieldsetGeneral";
 import FieldsetSiteData from "../components/FieldsetSiteData";
 import { Form, Button } from "reactstrap";
@@ -17,32 +16,16 @@ const AddRecords = () => {
     });
   };
   return (
-    <div>
-      Add Records
+    <>
+      <h2>Add Records</h2>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FieldsetGeneral
-          register={register}
-          // handleChangeInput={handleChangeInput}
-          // title={title}
-          // dateCollected={dateCollected}
-          // collectionNumber={collectionNumber}
-          // collectors={collectors}
-        />
-        <FieldsetSiteData
-          register={register}
-          // handleChangeInput={handleChangeInput}
-          // country={country}
-          // province={province}
-          // localSituation={localSituation}
-          // latitude={latitude}
-          // longitude={longitude}
-          // GpsDatum={GpsDatum}
-        />
+        <FieldsetGeneral register={register} />
+        <FieldsetSiteData register={register} />
         <Button type="submit" color="primary">
           Send
         </Button>
       </Form>
-    </div>
+    </>
   );
 };
 
