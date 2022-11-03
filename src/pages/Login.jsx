@@ -49,7 +49,12 @@ const Login = () => {
               />
             </Col>
             <Col sm="12" md="2" className="align-end">
-              <Button type="submit" color="primary" block>
+              <Button
+                type="submit"
+                color="primary"
+                block
+                style={{ marginBottom: "15px" }}
+              >
                 Submit
               </Button>
             </Col>

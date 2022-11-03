@@ -1,30 +1,45 @@
-import { useState } from "react";
 import { countryData } from "../data";
-import { Row, Col, Label, Input } from "reactstrap";
+import { Row, Col, Label } from "reactstrap";
 
-const FieldsetSiteData = ({ register }) => {
-  const [gpsUsed, setGpsUsed] = useState(true);
+const FieldsetSiteData = ({ register, gpsUsed, setGpsUsed }) => {
+  const handleGpsUse = (e) => {
+    if (e.target.value === "true") {
+      setGpsUsed(false);
+    } else {
+      setGpsUsed(true);
+    }
+  };
   return (
     <fieldset>
       <legend>Site data</legend>
       <Row>
         <Col sm="12" md="4">
           <Label htmlFor="country">Country</Label>
-          <Input type="select" id="country" {...register("country")}>
+          <select
+            className="form-control"
+            id="country"
+            {...register("country")}
+          >
             {countryData.map((country) => (
               <option key={country.id} value={country.name}>
                 {country.name}
               </option>
             ))}
-          </Input>
+          </select>
         </Col>
         <Col sm="12" md="4">
           <Label htmlFor="province">Province</Label>
-          <Input type="text" id="province" {...register("province")} />
+          <input
+            className="form-control"
+            type="text"
+            id="province"
+            {...register("province")}
+          />
         </Col>
         <Col sm="12" md="4">
           <Label htmlFor="localSituation">Local situation</Label>
-          <Input
+          <input
+            className="form-control"
             type="text"
             id="localSituation"
             {...register("localSituation")}
@@ -32,32 +47,37 @@ const FieldsetSiteData = ({ register }) => {
         </Col>
         <Col sm="12" md="3">
           <Label htmlFor="latitude">Latitude</Label>
-          <Input type="text" id="latitude" {...register("latitude")} />
+          <input
+            className="form-control"
+            type="text"
+            id="latitude"
+            {...register("latitude")}
+          />
         </Col>
         <Col sm="12" md="3">
           <Label htmlFor="longitude">Longitude</Label>
-          <Input type="text" id="longitude" {...register("longitude")} />
+          <input
+            className="form-control"
+            type="text"
+            id="longitude"
+            {...register("longitude")}
+          />
         </Col>
         <Col sm="12" md="2">
           <Label htmlFor="gps">GPS Used</Label>
-          <Input
-            type="select"
-            id="gps"
-            onChange={() => {
-              setGpsUsed(!gpsUsed);
-            }}
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </Input>
+          <select onChange={handleGpsUse} className="form-control" id="gps">
+            <option value={false}>No</option>
+            <option value={true}>Yes</option>
+          </select>
         </Col>
         <Col sm="12" md="4">
           <Label htmlFor="GpsDatum">GPS datum</Label>
-          <Input
-            disabled={!gpsUsed}
+          <input
+            className="form-control"
             type="text"
-            id="GpsDatum"
             {...register("GpsDatum")}
+            id="GpsDatum"
+            readOnly={gpsUsed}
           />
         </Col>
       </Row>

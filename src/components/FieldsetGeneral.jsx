@@ -1,4 +1,4 @@
-import { Row, Col, Label, Input } from "reactstrap";
+import { Row, Col, Label } from "reactstrap";
 
 const FieldsetGeneral = ({ register }) => {
   return (
@@ -7,23 +7,30 @@ const FieldsetGeneral = ({ register }) => {
       <Row>
         <Col sm="12" md="4">
           <Label htmlFor="dateCollected">Date collected</Label>
-          <Input
+          <input
+            className="form-control"
             type="date"
-            id="dateCollected"
             {...register("dateCollected")}
+            id="dateCollected"
           />
         </Col>
         <Col sm="12" md="4">
           <Label htmlFor="collectionNumber">Collector's number</Label>
-          <Input
+          <input
+            className="form-control"
             type="text"
-            id="collectionNumber"
             {...register("collectionNumber")}
+            id="collectionNumber"
           />
         </Col>
         <Col sm="12" md="4">
           <Label htmlFor="collectors">Collector(s)</Label>
-          <Input type="text" id="collectors" {...register("collectors")} />
+          <input
+            className="form-control"
+            type="text"
+            {...register("collectors")}
+            id="collectors"
+          />
         </Col>
       </Row>
     </fieldset>

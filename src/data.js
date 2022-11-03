@@ -20,6 +20,12 @@ export const stateOfSeeds = [
   { id: 4, name: "Other" },
 ];
 
+export const seedsCollectedFrom = [
+  { id: 1, name: "Plants" },
+  { id: 2, name: "Ground" },
+  { id: 3, name: "Both" },
+];
+
 export const plantHabit = [
   { id: 1, name: "Tree" },
   { id: 2, name: "Shrub" },
